@@ -44,5 +44,14 @@ describe("enhancing unit tests", () => {
       enhancement: 16
     });
   })
+
+  it("gets new item name", () => {
+    expect(enhancer.get(item)).toEqual(item)
+    expect(enhancer.get({...item, enhancement: 11})).toEqual({
+      ...item,
+      enhancement: 11,
+      name: "+11 item"
+    })
+  })
   
 })
