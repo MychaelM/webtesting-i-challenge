@@ -27,5 +27,22 @@ describe("enhancing unit tests", () => {
       durability: 15
     })
   })
+
+  it("fails", () => {
+    expect(enhancer.fail(item)).toEqual({
+      ...item,
+      durability: 10
+    })
+    expect(enhancer.fail({ ...item, enhancement: 15 })).toEqual({
+      ...item,
+      enhancement: 15,
+      durability: 5
+    });
+    expect(enhancer.fail({ ...item, enhancement: 17 })).toEqual({
+      ...item,
+      durability: 5,
+      enhancement: 16
+    });
+  })
   
 })
